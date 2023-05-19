@@ -1,20 +1,23 @@
 #ifndef ENDERECO_H
 #define ENDERECO_H
 
-#include <iostream>
-
-using namespace std;
+#include <string>
 
 class Endereco
 {
 private:
-    string rua;
+    std::string rua;
     int numero;
 
 public:
     Endereco();
-    Endereco(string nome, int cpf);
-    void imprimir();
+    Endereco(const std::string& rua, int numero);
+
+    std::string getRua() const;
+    void setRua(const std::string& rua);
+
+    int getNumero() const;
+    void setNumero(int numero);
 };
 
 #endif // ENDERECO_H

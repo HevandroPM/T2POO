@@ -12,10 +12,7 @@ private:
 
 public:
 	Jogo();
-    Jogo(const string &titulo, bool disponivel, int id, int ano_Lancamento,const string &categoria, const string &plataforma):Midia(titulo,disponivel,id,ano_Lancamento,categoria){
-        this->plataforma = plataforma;
-    };
-
+    Jogo(const string &titulo, bool disponivel, int id, int ano_Lancamento,const string &categoria, const string &plataforma);
     string getPlataforma() const;
     void setPlataforma(const string &value);
     virtual void imprimir();

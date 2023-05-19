@@ -16,7 +16,8 @@ private:
 public:
 		Midia();
     Midia(const string &titulo, bool disponivel, int id, int ano_Lancamento,const string &categoria);
-
+    int getId() const;
+    void setId(int value);
     string getTitulo() const;
     void setTitulo(const string &value);
     int getAnoLancamento() const;

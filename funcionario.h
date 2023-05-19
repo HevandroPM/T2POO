@@ -16,12 +16,16 @@ public:
         this->expediente=expediente;
         this->cargo=cargo;
     };
+    string getExpediente() const;
+    void setExpediente(const string &value);
+    string getCargo() const;
+    void setCargo(const string &value);
 };
 
 bool add_func();
 void remove_Func();
 void remove_Cliente();
-bool add_Prod(Produto p);
-bool add_Servico (Servico s);
+//bool add_Prod(Produto p);
+//bool add_Servico (Servico s);
 
 #endif // FUNCIONARIO_H

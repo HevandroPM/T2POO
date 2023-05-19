@@ -37,14 +37,12 @@ bool Midia::getDisponivel(){
 
 void Midia::imprimir()
 {
-    cout<<"\n ID: \t"<<this->getCodigo();
-    cout<<"\n Titulo:\t"<<this->getTitulo();
-    cout<<"\n Ano:\t"<<this->getAnoLancamento();
-    cout<<"\n Categoria:\t"<<this->getCategoria();
-    cout<<"\n Disponivel: \t"<<(this->getDisponivel() == 1)? "Sim":"Nao";
+    cout << "Mídia: " << endl;
+    cout << "Título: " << titulo << endl;
+    cout << "Ano de Lançamento: " << ano_Lancamento << endl;
+    cout << "Categoria: " << categoria << endl;
+    cout << "Disponível: " << (disponivel ? "Sim" : "Não") << endl;
 }
-
-void imprimir();
 
 Midia::Midia()
 {

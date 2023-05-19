@@ -1,8 +1,9 @@
 #include "funcionario.h"
-#include "produto.h"
-#include "servico.h"
+//#include "produto.h"
+//#include "servico.h"
 bool add_func() {
     //código
+    return 1;
 }
 
 void remove_Func() {
@@ -12,7 +13,7 @@ void remove_Func() {
 void remove_Cliente() {
     //código
 }
-
+/*
 bool add_Prod(Produto p){
     //código
 }
@@ -20,3 +21,4 @@ bool add_Prod(Produto p){
 bool add_Servico (Servico s){
     //código
 }
+*/

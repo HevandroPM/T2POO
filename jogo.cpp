@@ -11,10 +11,11 @@ void Jogo::setPlataforma(const string &value){
 
 void Jogo::imprimir()
 {
-    cout << "Jogo";
+    cout << "Jogo"<<endl;
+    cout << "Título: " << getTitulo() << endl;
+    cout << "Plataforma: " << plataforma << endl;
+    cout << "Disponivel: " << ((getDisponivel() == 1)?"SIM":"NAO") << endl; 
 }
-
-void imprimir();
 
 Jogo::Jogo()
 {

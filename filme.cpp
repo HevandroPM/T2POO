@@ -20,10 +20,11 @@ void Filme::setDuracao(const string &value){
 
 void Filme::imprimir()
 {
-    cout << "Filme";
+    cout << "Filme: " << endl;
+    cout << "Título: " << getTitulo() << endl;
+    cout << "Diretor: " << diretor << endl;
+    cout << "Duração: " << duracao << endl;
 }
-
-void imprimir();
 
 Filme::Filme()
 {
