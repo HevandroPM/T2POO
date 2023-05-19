@@ -37,7 +37,7 @@ bool Midia::getDisponivel(){
 
 void Midia::imprimir()
 {
-    cout << "Mídia: " << endl;
+    cout << "Mídia" << endl;
     cout << "Título: " << titulo << endl;
     cout << "Ano de Lançamento: " << ano_Lancamento << endl;
     cout << "Categoria: " << categoria << endl;
