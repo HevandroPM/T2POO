@@ -1,6 +1,14 @@
-#include <stdio.h>
 #include "pessoa.h"
 
-void Hello() {
-    printf("Hello World Pessoa");
+Pessoa::Pessoa()
+{
+
+}
+
+Pessoa::Pessoa(string nome, int cpf, string sexo,Endereco endereco)
+{
+    this->nome = nome;
+    this->cpf = cpf;
+    this->sexo = sexo;
+    this->endereco = endereco;
 }
