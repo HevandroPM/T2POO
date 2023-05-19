@@ -1,21 +1,18 @@
-# Makefile
-# make main
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++11
 
-# Variáveis
-CC = gcc
-CFLAGS = -Wall
+SRCS = main.cpp pessoa.cpp list.cpp banco_de_dados.cpp
+OBJS = $(SRCS:.cpp=.o)
+TARGET = main
 
-# Regras
-all: main
+all: $(TARGET)
 
-main: main.o pessoa.o
-	$(CC) $(CFLAGS) -o main main.o pessoa.o
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
 
-main.o: main.cpp pessoa.h
-	$(CC) $(CFLAGS) -c main.cpp
-
-pessoa.o: pessoa.cpp pessoa.h
-	$(CC) $(CFLAGS) -c pessoa.cpp
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o main
+	del /Q /F *.o
+	del /Q /F ${TARGET}.exe

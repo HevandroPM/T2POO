@@ -1,5 +1,5 @@
 #include <iostream>
-#include "list.h"
+ #include "list.h"
 #include "pessoa.h"
 using namespace std;
 
@@ -63,7 +63,7 @@ void Menu::main() {
 }
 
 
-int main(int argc, char const *argv[])
+int main()
 {
     Menu m;
     m.main();

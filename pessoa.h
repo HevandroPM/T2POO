@@ -1,6 +1,12 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-void Hello();
+class Endereco;
+
+class Pessoa;
+
+class Cliente;
+
+class Funcionario;
 
 #endif // PESSOA_H
