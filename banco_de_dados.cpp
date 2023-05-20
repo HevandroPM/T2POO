@@ -2,9 +2,18 @@
 #include"banco_de_dados.h"
 #include"list.h"
 #include"pessoa.h"
+#include"midia.h"
 
-struct banco_de_dados
-{
-    ListaDE<Cliente> clientes;
-    ListaDE<Funcionario> funcionarios;
-};
+
+void BancoDeDados::adiciona(Cliente c) {
+    //this->clientes.insere_fim(c);
+}
+
+void BancoDeDados::imprime_clientes(){
+    ElementoListaDE<Cliente> * nav = clientes.inicio;
+    while (nav != nullptr)
+    {
+        cout<<endl<<nav->dado.get_nome();
+    }
+    
+}

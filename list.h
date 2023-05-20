@@ -1,3 +1,6 @@
+#ifndef LIST_H
+#define LIST_H
+
 template <typename TIPO> struct ElementoListaDE {
   TIPO dado;
   ElementoListaDE<TIPO> *anterior;
@@ -28,3 +31,5 @@ template <typename TIPO> struct ListaDE {
   bool remove_pos(int indice);
 
 };
+
+#endif 

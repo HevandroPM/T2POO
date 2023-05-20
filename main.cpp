@@ -60,6 +60,10 @@ void Menu::main() {
     loc = new Locadora(nome, CNPJ);
 
     cout << "Bem-vindo a locadora " <<nome<<"!"<<endl<< endl;
+
+    Cliente * temp;
+    temp = novo_cliente("sergio", 120419309569, "todo dia", 1000.2, "Jorge Mattos", 186, "Centro");
+
 }
 
 
