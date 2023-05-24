@@ -5,17 +5,19 @@
 #include"pessoa.h"
 #include"midia.h"
 
-class BancoDeDados
+class BancoDeDadosClientes
 {
 private:
     ListaDE<Cliente> clientes;
-    ListaDE<Funcionario> funcionarios;
-    ListaDE<Midia> produtos;
 public:
 
     void adiciona(Cliente c);
-    void imprime_clientes();
+    bool remove(int ID);
+    bool edita(int ID);
+    void pesquisa(int ID);
+    void lista();
+
+    
 };
 
-
-#endif // PESSOA_H
+#endif // BANCO_DE_DADOS_H
