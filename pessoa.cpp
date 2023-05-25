@@ -8,9 +8,14 @@ Endereco::Endereco (string rua, int ncasa, string bairro) {
     this->Bairro = bairro;
 }
 
-ostream& operator<<(ostream& os, const Endereco& endereco) {
-    os << "Rua: " << endereco.rua << ", Número: " << endereco.n_casa << ", Bairro: " << endereco.Bairro;
-    return os;
+string Endereco::get_rua() {
+    return rua;
+}
+int Endereco::get_n_casa() {
+    return n_casa;
+}
+string Endereco::get_bairro() {
+    return Bairro;
 }
 
 Pessoa::Pessoa(string nome, long long int CPF, string sexo, Endereco *END){
@@ -87,12 +92,45 @@ ostream& operator<<(ostream& os, const Cliente& cliente) {
     os << "Nome: " << cliente.nome << endl;
     os << "CPF: " << cliente.CPF << endl;
     os << "Sexo: " << cliente.sexo << endl;
-    os << "Endereço: " << *(cliente.END) << endl;
     os << "Dinheiro: " << cliente.dinheiro << endl;
+
+    if (cliente.END != nullptr) {
+        os << "Rua: " << cliente.END->get_rua() << endl;
+        os << "Numero de casa: " << cliente.END->get_n_casa() << endl;
+        os << "Bairro: " << cliente.END->get_bairro() << endl;
+    }
     return os;
 }
 
 Funcionario::Funcionario (string nome, long long int CPF, string sexo, string expediente, string cargo, Endereco * END) : Pessoa(nome, CPF, sexo, END) {
     this->expediente = expediente;
     this->cargo = cargo;
+}
+
+string Funcionario::get_expediente(){
+    return this->expediente;
+}
+
+void Funcionario::set_expediente(string expediente) {
+    this->expediente = expediente;
+}
+void Funcionario::set_cargo(string cargo) {
+    this->cargo = cargo;
+}
+string Funcionario::get_cargo() {
+    return this->cargo;
+}
+
+ostream& operator<<(ostream& os, const Funcionario& funcionario) {
+    os << "Nome: " << funcionario.nome << endl;
+    os << "CPF: " << funcionario.CPF << endl;
+    os << "Sexo: " << funcionario.sexo << endl;
+    os << "Cargo: " << funcionario.cargo << endl;
+    os << "Expediente: " << funcionario.expediente << endl;
+
+    if (funcionario.END != nullptr) {
+        os << "Rua: " << funcionario.END->get_rua() << endl;
+        os << "Numero de casa: " << funcionario.END->get_n_casa() << endl;
+        os << "Bairro: " << funcionario.END->get_bairro() << endl;
+    }
 }

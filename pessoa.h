@@ -9,7 +9,9 @@ private:
 
 public:
     Endereco (string rua, int ncasa, string bairro);
-    friend ostream& operator<<(ostream& os, const Endereco& endereco);
+    string get_rua();
+    int get_n_casa();
+    string get_bairro();
 };
 
 class Pessoa {
@@ -61,7 +63,11 @@ private:
 
 public:
     Funcionario (string nome, long long int CPF, string sexo, string expediente, string cargo, Endereco * END);
-
+    string get_expediente();
+    void set_expediente(string expediente);
+    void set_cargo(string cargo);
+    string get_cargo();
+    friend ostream& operator<<(ostream& os, const Funcionario& funcionario);
 };
 
 #endif // PESSOA_H

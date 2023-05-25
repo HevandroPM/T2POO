@@ -1,5 +1,5 @@
-#ifndef BANCO_DE_DADOS_H
-#define BANCO_DE_DADOS_H
+#ifndef BANCO_DE_DADOS_CLIENTES_H
+#define BANCO_DE_DADOS_CLIENTES_H
 
 #include"list.h"
 #include"pessoa.h"
@@ -14,8 +14,9 @@ public:
     void adiciona(Cliente c);
     bool remove(int ID);
     bool edita(int ID);
-    void pesquisa(int ID);
+    Cliente pesquisa(int ID);
     void lista();
+    int get_tam();
 
     
 };

@@ -1,33 +1,34 @@
 #include<iostream>
-#include"banco_de_dados.h"
+#include"banco_de_dados_funcionarios.h"
 #include"list.h"
 #include"pessoa.h"
 #include"midia.h"
 
 
-void BancoDeDadosClientes::adiciona(Cliente c) {
-    this->clientes.insere_fim(c);
+void BancoDeDadosFuncionarios::adiciona(Funcionario f) {
+    this->funcionarios.insere_fim(f);
 }
 
-void BancoDeDadosClientes::lista(){
-    ElementoListaDE<Cliente> * nav = clientes.inicio;
+void BancoDeDadosFuncionarios::lista(){
+    ElementoListaDE<Funcionario> * nav = funcionarios.inicio;
     while (nav != nullptr)
     {
         cout<<endl<<nav->dado.get_ID()<<" "<<nav->dado.get_nome();
         nav = nav->proximo;
     }
-    cout<<endl<<"Ha "<<clientes.tamanho()<<" clientes cadastradas no banco de dados."<<endl;
+    cout<<endl<<"Ha "<<funcionarios.tamanho()<<" funcionarios cadastradas no banco de dados."<<endl;
     
 }
 
 
-bool BancoDeDadosClientes::remove(int ID) {
-    ElementoListaDE<Cliente> * nav = clientes.inicio;
+bool BancoDeDadosFuncionarios::remove(int ID) {
+    ElementoListaDE<Funcionario> * nav = funcionarios.inicio;
     int cont = 0;
+
     while (nav != nullptr)
     {
         if (nav->dado.get_ID() == ID) {
-            clientes.remove_pos(cont);
+            funcionarios.remove_pos(cont);
             return true;
         } else {
             cont ++;
@@ -37,21 +38,20 @@ bool BancoDeDadosClientes::remove(int ID) {
     return false;
 }
 
-void BancoDeDadosClientes::pesquisa(int ID) {
-    ElementoListaDE<Cliente> * nav = clientes.inicio;
+Funcionario BancoDeDadosFuncionarios::pesquisa(int ID) {
+    ElementoListaDE<Funcionario> * nav = funcionarios.inicio;
     while (nav != nullptr)
     {
         if (nav->dado.get_ID() == ID) {
-            break;
+            return nav->dado;
         } else {
             nav = nav->proximo;
         }
     }
-    cout<<nav->dado;
 }
 
-bool BancoDeDadosClientes::edita(int ID){
-    ElementoListaDE<Cliente> * cliente = clientes.inicio;
+bool BancoDeDadosFuncionarios::edita(int ID){
+    ElementoListaDE<Funcionario> * cliente = funcionarios.inicio;
     while (cliente != nullptr)
     {
         if (cliente->dado.get_ID() == ID) {
@@ -61,7 +61,7 @@ bool BancoDeDadosClientes::edita(int ID){
         }
     }
     if (cliente == nullptr) {
-        cout << "Cliente do ID " << ID << " não foi encontrado." << endl;
+        cout << "Funcionario do ID " << ID << " não foi encontrado." << endl;
         return false;
     }
 
@@ -71,7 +71,8 @@ bool BancoDeDadosClientes::edita(int ID){
     cout << "2. CPF" << endl;
     cout << "3. Sexo" << endl;
     cout << "4. Endereço" << endl;
-    cout << "5. Dinheiro" << endl;
+    cout << "5. Expediente" << endl;
+    cout << "6. Cargo" << endl;
 
     int choice;
     cin >> choice;
@@ -92,7 +93,7 @@ bool BancoDeDadosClientes::edita(int ID){
             break;
         }
         case 3: {
-            cout << "Enter the novo genero: ";
+            cout << "Insira the novo genero: ";
             string novoGenero;
             cin>>novoGenero;
             cliente->dado.set_sexo(novoGenero);
@@ -117,10 +118,17 @@ bool BancoDeDadosClientes::edita(int ID){
             break;
         }
         case 5: {
-            cout << "Insira a nova quantidade de dinheiro: ";
-            float novoDinheiro;
-            cin >> novoDinheiro;
-            cliente->dado.set_dinheiro(novoDinheiro);
+            cout << "Insira o novo expediente: ";
+            string expediente;
+            cin >> expediente;
+            cliente->dado.set_expediente(expediente);
+            break;
+        }
+        case 6: {
+            cout << "Insira o novo cargo: ";
+            string cargo;
+            cin >> cargo;
+            cliente->dado.set_expediente(cargo);
             break;
         }
         default:
@@ -128,6 +136,10 @@ bool BancoDeDadosClientes::edita(int ID){
             return false;
     }
 
-    cout << "Cliente do ID " << ID << " editado com sucesso." << endl;
+    cout << "Funcionario do ID " << ID << " editado com sucesso." << endl;
     return true;
+}
+
+int BancoDeDadosFuncionarios::get_tam() {
+    return funcionarios.tamanho();
 }

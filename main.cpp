@@ -1,7 +1,9 @@
 #include <iostream>
 #include "list.h"
 #include "pessoa.h"
-#include "banco_de_dados.h"
+#include "banco_de_dados_clientes.h"
+#include"banco_de_dados_funcionarios.h"
+#include"banco_de_dados_midia.h"
 using namespace std;
 
 class Filme;
@@ -13,6 +15,7 @@ private:
     string CNPJ;
 public:
     BancoDeDadosClientes BDDC;
+    BancoDeDadosFuncionarios BDDF;
     Locadora(string nome, string CNPJ);
 };
 
@@ -98,6 +101,8 @@ void Menu::handleMainMenu(string optionName) {
     string bairro;
     int opcaoSecundaria;
     int ID;
+    string expediente;
+    string cargo;
     while (true) {
         if (optionName == "Clientes") {
             displaySecondaryMenu(optionName);
@@ -122,9 +127,6 @@ void Menu::handleMainMenu(string optionName) {
 
                     Cliente* novoCliente = novo_cliente(nome, CPF, sexo, dinheiro, rua, ncasa, bairro);
                     loc->BDDC.adiciona(*novoCliente);
-                    // Libera o espaço da memoria alocada dinamicamente
-                    delete novoCliente->get_END();
-                    delete novoCliente;
                     break;
                 }
                 case 2: {
@@ -140,13 +142,72 @@ void Menu::handleMainMenu(string optionName) {
                 case 4: {
                     cout << "Digite o ID do cliente que você quer pesquisar: ";
                     cin>>ID;
-                    loc->BDDC.pesquisa(ID);
+                    cout<<loc->BDDC.pesquisa(ID);
                     break;
                 }
                 case 5: {
                     cout << "Digite o ID do cliente que você quer editar: ";
                     cin>>ID;
                     loc->BDDC.edita(ID);
+                    break;
+                }
+                case 0: {
+                    return;
+                }
+                default: {
+                    cout << "Opcao invalida!" << endl;
+                    break;
+                }
+            }
+        }
+        if (optionName == "Funcionarios") {
+            displaySecondaryMenu(optionName);
+            cin >> opcaoSecundaria;
+
+            switch (opcaoSecundaria) {
+                case 1: {
+                    cout << "Digite o nome do funcionario: ";
+                    cin>>nome;
+                    cout << "Digite o CPF do funcionario: ";
+                    cin >> CPF;
+                    cout << "Digite o sexo do funcionario: ";
+                    cin>>sexo;
+                    cout << "Digite a rua do endereço do funcionario: ";
+                    cin>>rua;
+                    cout << "Digite o número da casa do endereço do funcionario: ";
+                    cin >> ncasa;
+                    cout << "Digite o bairro do endereço do funcionario: ";
+                    cin>>bairro;
+                    cout << "Digite o expediente do funcionario: ";
+                    cin >> expediente;
+                    cout << "Digite o cargo do funcionario: ";
+                    cin >> cargo;
+
+                    Endereco * end = new Endereco(rua, ncasa, bairro);
+                    Funcionario novoFuncionario = Funcionario(nome, CPF, sexo, expediente, cargo, end);
+                    loc->BDDF.adiciona(novoFuncionario);
+                    break;
+                }
+                case 2: {
+                    cout << "Digite o ID do funcionario que você quer remover: ";
+                    cin>>ID;
+                    loc->BDDF.remove(ID);
+                    break;
+                }
+                case 3: {
+                    loc->BDDF.lista();
+                    break;
+                }
+                case 4: {
+                    cout << "Digite o ID do funcionario que você quer pesquisar: ";
+                    cin>>ID;
+                    cout<<loc->BDDF.pesquisa(ID);
+                    break;
+                }
+                case 5: {
+                    cout << "Digite o ID do funcionario que você quer editar: ";
+                    cin>>ID;
+                    loc->BDDF.edita(ID);
                     break;
                 }
                 case 0: {
@@ -185,6 +246,6 @@ int main()
 {
     Menu m;
     m.main();
-    system("pause");
+
     return 0;
 }

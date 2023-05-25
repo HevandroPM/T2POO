@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++11
 
-SRCS = main.cpp pessoa.cpp banco_de_dados.cpp
+SRCS = main.cpp pessoa.cpp banco_de_dados_clientes.cpp banco_de_dados_funcionarios.cpp
 OBJS = $(SRCS:.cpp=.o)
 TARGET = main
 
