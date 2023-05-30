@@ -10,10 +10,10 @@ private:
     ListaDE<Funcionario> funcionarios;
 public:
 
-    void adiciona(Funcionario f);
+    bool adiciona(Funcionario f);
     bool remove(int ID);
     bool edita(int ID);
-    Funcionario pesquisa(int ID);
+    Funcionario * pesquisa(int ID);
     void lista();
     int get_tam();
 

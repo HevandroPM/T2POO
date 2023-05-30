@@ -14,7 +14,7 @@ public:
     void adiciona(Cliente c);
     bool remove(int ID);
     bool edita(int ID);
-    Cliente pesquisa(int ID);
+    Cliente * pesquisa(int ID);
     void lista();
     int get_tam();
 

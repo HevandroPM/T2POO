@@ -19,15 +19,16 @@ template <typename TIPO> struct ListaDE {
 
   void insere_fim(TIPO dado) {
     ElementoListaDE<TIPO> *novo = novoelementoDE(dado);
-    novo->anterior = fim;
-    fim = novo;
-    if (novo->anterior != nullptr) {
-      ElementoListaDE<TIPO> *anterior = novo->anterior;
-      anterior->proximo = novo;
-    } else {
+    if (inicio == nullptr) {
       inicio = novo;
+      fim = novo;
+    } else {
+      novo->anterior = fim;
+      fim->proximo = novo;
+      fim = novo;
     }
   }
+
 
   void insere_inicio(TIPO dado) {
     ElementoListaDE<TIPO> *novo = novoelementoDE(dado);

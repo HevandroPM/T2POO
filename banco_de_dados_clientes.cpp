@@ -39,12 +39,14 @@ bool BancoDeDadosClientes::remove(int ID) {
     return false;
 }
 
-Cliente BancoDeDadosClientes::pesquisa(int ID) {
+Cliente * BancoDeDadosClientes::pesquisa(int ID) {
     ElementoListaDE<Cliente> * nav = clientes.inicio;
+    Cliente * result;
     while (nav != nullptr)
     {
         if (nav->dado.get_ID() == ID) {
-            return nav->dado;
+            result = &nav->dado;
+            return result;
         } else {
             nav = nav->proximo;
         }

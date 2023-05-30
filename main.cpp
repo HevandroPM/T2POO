@@ -92,6 +92,8 @@ void Menu::handleMainMenu() {
 }
 
 void Menu::handleMainMenu(string optionName) {
+    Cliente * tempC;
+    Funcionario * tempF;
     string nome;
     long long int CPF;
     string sexo;
@@ -142,7 +144,13 @@ void Menu::handleMainMenu(string optionName) {
                 case 4: {
                     cout << "Digite o ID do cliente que você quer pesquisar: ";
                     cin>>ID;
-                    cout<<loc->BDDC.pesquisa(ID);
+                    tempC = nullptr;
+                    tempC = loc->BDDC.pesquisa(ID);
+                    if (tempC == nullptr) {
+                        cout << "Cliente nao encontrado!" << endl;
+                    } else {
+                        cout<<*tempC;
+                    }
                     break;
                 }
                 case 5: {
@@ -201,7 +209,13 @@ void Menu::handleMainMenu(string optionName) {
                 case 4: {
                     cout << "Digite o ID do funcionario que você quer pesquisar: ";
                     cin>>ID;
-                    cout<<loc->BDDF.pesquisa(ID);
+                    tempF = nullptr;
+                    tempF = loc->BDDF.pesquisa(ID);
+                    if (tempF == nullptr) {
+                        cout << "Funcionario nao encontrado!" << endl;
+                    } else {
+                        cout<<*tempF;
+                    }
                     break;
                 }
                 case 5: {

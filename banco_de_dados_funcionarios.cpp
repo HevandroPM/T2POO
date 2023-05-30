@@ -5,8 +5,9 @@
 #include"midia.h"
 
 
-void BancoDeDadosFuncionarios::adiciona(Funcionario f) {
+bool BancoDeDadosFuncionarios::adiciona(Funcionario f) {
     this->funcionarios.insere_fim(f);
+    return true;
 }
 
 void BancoDeDadosFuncionarios::lista(){
@@ -38,12 +39,14 @@ bool BancoDeDadosFuncionarios::remove(int ID) {
     return false;
 }
 
-Funcionario BancoDeDadosFuncionarios::pesquisa(int ID) {
+Funcionario * BancoDeDadosFuncionarios::pesquisa(int ID) {
     ElementoListaDE<Funcionario> * nav = funcionarios.inicio;
+    Funcionario * result;
     while (nav != nullptr)
     {
         if (nav->dado.get_ID() == ID) {
-            return nav->dado;
+            result = &(nav->dado);
+            return result;
         } else {
             nav = nav->proximo;
         }
