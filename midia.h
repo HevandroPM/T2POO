@@ -8,27 +8,25 @@ class Midia
 {
 private:
     string titulo;
-    bool disponivel;
-    int id;
     int ano_Lancamento;
     string categoria;
+    int ID;
+    static int cont;
 
 public:
-		Midia();
-    Midia(const string &titulo, bool disponivel, int id, int ano_Lancamento,const string &categoria);
-    int getId() const;
-    void setId(int value);
+    Midia(const string &titulo, int ano_Lancamento,const string &categoria);
     string getTitulo() const;
     void setTitulo(const string &value);
     int getAnoLancamento() const;
     void setAnoLancamento(const int &value);
-    string getCodigo() const;
-    void setCodigo(const string &value);
     string getCategoria() const;
     void setCategoria(const string &value);
-    void setDisponivel(const bool &disponivel);
-    bool getDisponivel();
+    int get_ID();
     virtual void imprimir();
+
+    static int get_cont() {
+        return cont;
+    }
 };
 
 #endif // MIDIA_H

@@ -11,7 +11,7 @@ void BancoDeDadosMidia::lista(){
     ElementoListaDE<Midia*> * nav = produtos.inicio;
     while (nav != nullptr)
     {
-        cout<<endl<<nav->dado->getId()<<" "<<nav->dado->getTitulo();
+        cout<<endl<<nav->dado->get_ID()<<" "<<nav->dado->getTitulo();
         nav = nav->proximo;
     }
     cout<<endl<<"Ha "<<produtos.tamanho()<<" produtos cadastradas no banco de dados."<<endl;
@@ -26,7 +26,7 @@ bool BancoDeDadosMidia::remove(int ID) {
 
     while (nav != nullptr)
     {
-        if (nav->dado->getId() == ID) {
+        if (nav->dado->get_ID() == ID) {
             produtos.remove_pos(cont);
             return true;
         } else {
@@ -41,7 +41,7 @@ Midia * BancoDeDadosMidia::pesquisa(int ID) {
     ElementoListaDE<Midia*> * nav = produtos.inicio;
     while (nav != nullptr)
     {
-        if (nav->dado->getId() == ID) {
+        if (nav->dado->get_ID() == ID) {
             return nav->dado;
         } else {
             nav = nav->proximo;

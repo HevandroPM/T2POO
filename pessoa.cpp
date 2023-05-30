@@ -133,4 +133,5 @@ ostream& operator<<(ostream& os, const Funcionario& funcionario) {
         os << "Numero de casa: " << funcionario.END->get_n_casa() << endl;
         os << "Bairro: " << funcionario.END->get_bairro() << endl;
     }
+    return os;
 }

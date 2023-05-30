@@ -16,6 +16,7 @@ private:
 public:
     BancoDeDadosClientes BDDC;
     BancoDeDadosFuncionarios BDDF;
+    BancoDeDadosMidia BDDM;
     Locadora(string nome, string CNPJ);
 };
 
@@ -92,6 +93,7 @@ void Menu::handleMainMenu() {
 }
 
 void Menu::handleMainMenu(string optionName) {
+    Midia * tempM;
     Cliente * tempC;
     Funcionario * tempF;
     string nome;
@@ -101,10 +103,22 @@ void Menu::handleMainMenu(string optionName) {
     string rua;
     int ncasa;
     string bairro;
-    int opcaoSecundaria;
+    int opcaoSecundaria, opcaoMidia;
     int ID;
     string expediente;
     string cargo;
+
+    //atributos para instaciar uma classe midia
+    string titulo;
+    int ano_lancamento;
+    string categoria;
+
+    string plataforma;
+
+    string diretor;
+    string duracao;
+    
+
     while (true) {
         if (optionName == "Clientes") {
             displaySecondaryMenu(optionName);
@@ -229,6 +243,76 @@ void Menu::handleMainMenu(string optionName) {
                 }
                 default: {
                     cout << "Opcao invalida!" << endl;
+                    break;
+                }
+            }
+        }
+        if (optionName == "Midia") { 
+            displaySecondaryMenu(optionName);
+            cin >> opcaoSecundaria;
+
+            switch (opcaoSecundaria) {
+                case 1: { // Adicionando uma midia: o usuario irá escolher se quer adicionar um jogo ou um filme, colocará as informações necessárias para chamar o construtor e depois essa midia será adicionada no banco de dados de midia
+                    cout <<"Escolha o tipo da midia.\n1 - Jogo\n2 - Filme"<<endl;
+                    cin >> opcaoMidia;
+                    if (opcaoMidia == 1) {
+                        cout<<"Insira o titulo do jogo: "<<endl;
+                        cin>>titulo;
+                        cout<<"Insira o ano de lancamento do jogo: "<<endl;
+                        cin>>ano_lancamento;
+                        cout<<"Insira a categoria do jogo:"<<endl;
+                        cin>>categoria;
+                        cout<<"Insira a plataformato do jogo: "<<endl;
+                        cin>>plataforma;
+                        tempM = new Jogo(titulo, ano_lancamento, categoria, plataforma);
+                    } else if (opcaoMidia == 2) {
+                        cout<<"Insira o titulo do filme: "<<endl;
+                        cin>>titulo;
+                        cout<<"Insira o ano de lancamento do filme: "<<endl;
+                        cin>>ano_lancamento;
+                        cout<<"Insira a categoria do filme:"<<endl;
+                        cin>>categoria;
+                        cout<<"Insira o nome do diretor do filme:"<<endl;
+                        cin>>diretor;
+                        cout<<"Insira a duracao do filme:"<<endl;
+                        cin>>duracao;
+                        tempM = new Filme(titulo, ano_lancamento, categoria, diretor, duracao);
+                    }
+
+                    loc->BDDM.adiciona(tempM);
+                    break;
+                }
+                case 2: {
+                    cout<<"Insira o Id do produto que você deseja deletar: "<<endl;
+                    cin>>ID;
+                    loc->BDDM.remove(ID);
+                    break;
+                }
+                case 3: {
+                    loc->BDDM.lista();
+                    break;
+                }
+                case 4: {
+                    cout<<"Insira o Id do produto que você deseja pesquisar:"<<endl;
+                    cin>>ID;
+                    tempM = nullptr;
+                    tempM = loc->BDDM.pesquisa(ID);
+                    if (tempM == nullptr) {
+                        cout << "Midia nao encontrada!" << endl;
+                    } else {
+                        tempM->imprimir();
+                    }
+                    break;
+                }
+                case 5: {
+                   
+                    break;
+                }
+                case 0: {
+                    return;
+                }
+                default: {
+                    
                     break;
                 }
             }

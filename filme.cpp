@@ -22,17 +22,14 @@ void Filme::imprimir()
 {
     cout << "Filme" << endl;
     cout << "Título: " << getTitulo() << endl;
+    cout<< "Ano de lançamento: "<<getAnoLancamento() << endl;
+    cout<< "Categorio: "<<getCategoria() << endl;
     cout << "Diretor: " << getDiretor() << endl;
     cout << "Duração: " << getDuracao() << endl;
-    cout << "Disponivel: " << ((getDisponivel() == 1)?"SIM":"NAO") << endl;
 }
 
-Filme::Filme()
-{
-}
-
-Filme::Filme(const string &titulo, bool disponivel, int id, int ano_Lancamento,const string &categoria, const string &diretor, const string &duracao)
-    : Midia(titulo,disponivel,id,ano_Lancamento,categoria)
+Filme::Filme(const string &titulo, int ano_Lancamento,const string &categoria, const string &diretor, const string &duracao)
+    : Midia(titulo,ano_Lancamento,categoria)
 {
     this->diretor = diretor;
     this->duracao = duracao;
