@@ -305,7 +305,9 @@ void Menu::handleMainMenu(string optionName) {
                     break;
                 }
                 case 5: {
-                   
+                    cout<<"Insira o Id do produto que você deseja editar:"<<endl;
+                    cin>>ID;
+                    loc->BDDM.edita(ID);
                     break;
                 }
                 case 0: {
